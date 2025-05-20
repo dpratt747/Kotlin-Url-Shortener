@@ -11,7 +11,7 @@ repositories {
 }
 
 private val arrowVersion = "2.1.0"
-private val http4kVersion = "6.9.0.0"
+private val http4kVersion = "6.9.1.0"
 
 dependencies {
     testImplementation(kotlin("test"))

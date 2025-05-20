@@ -13,5 +13,5 @@
 ## Swagger Url
 
 ```text
-http://localhost:8080/docs/
+http://localhost:8080/v1/docs/
 ```

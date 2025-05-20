@@ -1,22 +1,9 @@
-import com.fasterxml.jackson.databind.JsonNode
 import endpoints.ShortenerEndpoints
-import endpoints.ShortenerEndpoints.Companion.asJson
-import org.http4k.contract.contract
-import org.http4k.contract.meta
 import org.http4k.contract.openapi.ApiInfo
-import org.http4k.contract.openapi.v3.ApiServer
 import org.http4k.contract.openapi.v3.OpenApi3
 import org.http4k.contract.ui.swaggerUiLite
-import org.http4k.core.Method
-import org.http4k.core.Request
-import org.http4k.core.Response
-import org.http4k.core.Status
-import org.http4k.core.Uri
-import org.http4k.format.Jackson
-import org.http4k.routing.bind
-import org.http4k.routing.routes
-import org.http4k.server.SunHttp
-import org.http4k.server.asServer
+import org.http4k.routing.*
+import org.http4k.server.*
 import persistence.InMemoryDatabase
 import services.UrlShortenerService
 
@@ -27,15 +14,15 @@ object Application {
         val service = UrlShortenerService.make(db)
         val shortenerEndpoints = ShortenerEndpoints.make(service)
 
-        val descriptionPath = "/openapi.json"
+        val v1DescriptionPath = "/v1/openapi.json"
         val renderer = OpenApi3(
             ApiInfo("Url Shortener Service", "1.0"),
         )
 
         val http = routes(
-            shortenerEndpoints.endpoints(renderer, descriptionPath),
-            "/docs" bind swaggerUiLite { // http://localhost:8080/docs
-                url = descriptionPath
+            shortenerEndpoints.endpoints(renderer, v1DescriptionPath),
+            "/v1/docs" bind swaggerUiLite { // http://localhost:8080/docs
+                url = v1DescriptionPath
                 pageTitle = "Url Shortener - Swagger Doc"
                 persistAuthorization = true
             }
@@ -46,15 +33,5 @@ object Application {
         ).start()
 
         println("Application is running")
-
-
-//        var opt = Option(1)
-//        opt = None
-//
-//        when (opt) {
-//            is Some -> println("Got some ${opt.value}")
-//            None -> println("Got none")
-//        }
-
     }
 }

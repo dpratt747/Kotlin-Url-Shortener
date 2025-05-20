@@ -14,11 +14,10 @@ data class ShortenEndpointRequest(
     val longUrl: LongUrl
 )
 
-data class ShortenEndpointResponse(
-    val shortUrl: ShortUrl
-)
-
-
 /**
  * Responses
  */
+
+data class ShortenEndpointResponse(
+    val shortUrl: ShortUrl
+)
