@@ -9,3 +9,9 @@
 ```bash
 ./gradlew run
 ```
+
+## Swagger Url
+
+```text
+http://localhost:8080/docs/
+```
