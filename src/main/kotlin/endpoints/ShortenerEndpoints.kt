@@ -59,7 +59,7 @@ class ShortenerEndpoints private constructor(private val service: UrlShortenerSe
             .asJson()
     }
 
-    private val redirectToLongUrlEndpoint = "/" / Path.of("shortUrl") meta {
+    private val redirectToLongUrlEndpoint = ""/ Path.of("shortUrl") meta {
         operationId = "Redirect to the stored long url"
         summary = "Redirects a shortened URL to its original destination"
         returning(Status.TEMPORARY_REDIRECT)
