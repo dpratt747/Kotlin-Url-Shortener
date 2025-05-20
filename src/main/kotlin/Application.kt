@@ -8,8 +8,9 @@ object Application {
         val db = InMemoryDatabase.make()
         val service = UrlShortenerService.make(db)
 
+//        TODO("checkout endpoint libraries")
 
-        TODO("checkout endpoint libraries")
+        println("Running kotlin application")
 
 //        var opt = Option(1)
 //        opt = None
